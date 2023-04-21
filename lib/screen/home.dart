@@ -12,184 +12,169 @@ class HomeScreen extends StatelessWidget {
         height: screenSize.height,
         width: screenSize.width,
         // constraints: BoxConstraints(
-        //   maxHeight: screenSize.height,
-        //   maxWidth: screenSize.width,
-        // ),
+        //     maxHeight: screenSize.height, maxWidth: screenSize.width),
         decoration: BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
               colors: [Colors.indigo, Colors.blue.shade400]),
         ),
-        child: SafeArea(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+        child: ListView(children: [
+          //
+          //
+          //
+          Container(
+            height: screenSize.height * 0.35,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [Colors.indigo, Colors.blue.shade400]),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 15, right: 25, left: 25),
+              child: Column(children: [
                 //
                 //
                 //
-                Container(
-                  height: screenSize.height * 0.35,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [Colors.indigo, Colors.blue.shade400]),
-                  ),
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.only(top: 15, right: 25, left: 25),
-                    child: Column(children: [
-                      //
-                      //
-                      //
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              height: 45,
-                              width: 45,
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(color: Colors.white),
-                                  image: const DecorationImage(
-                                      image: AssetImage("assets/whit2.jpg"),
-                                      fit: BoxFit.cover)),
-                            ),
-                            const SizedBox(width: 10),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Text(
-                                  "Hello, selam",
-                                  style: TextStyle(
-                                      fontSize: 15, color: Colors.white70),
-                                ),
-                                Text(
-                                  "Welcome Back!",
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                )
-                              ],
-                            ),
-                            const Spacer(),
-                            Container(
-                              height: 35,
-                              width: 35,
-                              decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.white24),
-                              child: const Icon(
-                                Icons.notifications_none_outlined,
-                                color: Colors.white54,
-                                size: 24,
-                              ),
-                            ),
-                          ]),
-                      //
-                      //
-                      //
-                      SizedBox(height: screenSize.height * 0.05),
-                      const Text("Available limit",
-                          style:
-                              TextStyle(fontSize: 15, color: Colors.white70)),
-                      SizedBox(height: screenSize.height * 0.015),
-                      const Text("20,000.00",
-                          style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white))
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 45,
+                        width: 45,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.white),
+                            image: const DecorationImage(
+                                image: AssetImage("assets/whit2.jpg"),
+                                fit: BoxFit.cover)),
+                      ),
+                      const SizedBox(width: 10),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            "Hello, selam",
+                            style:
+                                TextStyle(fontSize: 15, color: Colors.white70),
+                          ),
+                          Text(
+                            "Welcome Back!",
+                            style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          )
+                        ],
+                      ),
+                      const Spacer(),
+                      Container(
+                        height: 35,
+                        width: 35,
+                        decoration: const BoxDecoration(
+                            shape: BoxShape.circle, color: Colors.white24),
+                        child: const Icon(
+                          Icons.notifications_none_outlined,
+                          color: Colors.white54,
+                          size: 24,
+                        ),
+                      ),
                     ]),
-                  ),
-                ),
                 //
                 //
                 //
-                //
-                //
-                Expanded(
-                  child: Container(
-                    width: screenSize.width,
-                    decoration: BoxDecoration(
-                        color: Colors.grey.shade100,
-                        borderRadius: const BorderRadius.vertical(
-                            top: Radius.circular(40.0))),
-                    child: Padding(
-                      padding:
-                          const EdgeInsets.only(top: 25, right: 25, left: 25),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  PaymentWidgets(
-                                      title: "Pay",
-                                      icon: Icons.clean_hands_rounded),
-                                  PaymentWidgets(
-                                      title: "Scan",
-                                      icon: Icons.qr_code_scanner_rounded),
-                                ]),
-                            const SizedBox(height: 20),
-                            Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  PaymentWidgets(
-                                      title: "Pay",
-                                      icon: Icons.clean_hands_rounded),
-                                  PaymentWidgets(
-                                      title: "Scan",
-                                      icon: Icons.qr_code_scanner_rounded),
-                                ]),
-
-                            const SizedBox(height: 50),
-                            //
-                            //Header
-                            //
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                const Text(
-                                  "Transaction History",
-                                  style: TextStyle(
-
-                                      // fontFamily: AppFonts.title,
-                                      ),
-                                ),
-                                GestureDetector(
-                                  // onTap: () => Navigator.of(context)
-                                  //     .push(CupertinoPageRoute(builder: (context) => ontap)),
-                                  child: const Text(
-                                    "See All",
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 10),
-                            //
-                            //
-                            //
-                            const TransactionHistoryWidget(),
-                            const SizedBox(height: 10),
-                            const TransactionHistoryWidget(),
-                            SizedBox(height: 80)
-                          ]),
-                    ),
-                  ),
-                )
+                SizedBox(height: screenSize.height * 0.05),
+                const Text("Available limit",
+                    style: TextStyle(fontSize: 15, color: Colors.white70)),
+                SizedBox(height: screenSize.height * 0.015),
+                const Text("20,000.00",
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white))
               ]),
-        ),
+            ),
+          ),
+          //
+          //
+          //
+          //
+          //
+          Container(
+            width: screenSize.width,
+            decoration: BoxDecoration(
+                color: Colors.grey.shade100,
+                borderRadius:
+                    const BorderRadius.vertical(top: Radius.circular(40.0))),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 25, right: 25, left: 25),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          PaymentWidgets(
+                              title: "Pay", icon: Icons.clean_hands_rounded),
+                          PaymentWidgets(
+                              title: "Scan",
+                              icon: Icons.qr_code_scanner_rounded),
+                        ]),
+                    const SizedBox(height: 20),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          PaymentWidgets(
+                              title: "Pay", icon: Icons.clean_hands_rounded),
+                          PaymentWidgets(
+                              title: "Scan",
+                              icon: Icons.qr_code_scanner_rounded),
+                        ]),
+
+                    const SizedBox(height: 50),
+                    //
+                    //Header
+                    //
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Transaction History",
+                            style: TextStyle(
+
+                                // fontFamily: AppFonts.title,
+                                ),
+                          ),
+                          GestureDetector(
+                            // onTap: () => Navigator.of(context)
+                            //     .push(CupertinoPageRoute(builder: (context) => ontap)),
+                            child: const Text(
+                              "See All",
+                            ),
+                          ),
+                        ]),
+                    const SizedBox(height: 10),
+                    //
+                    //
+                    //
+                    const TransactionHistoryWidget(),
+                    const SizedBox(height: 10),
+                    const TransactionHistoryWidget(),
+
+                    const SizedBox(height: 10),
+                    const TransactionHistoryWidget(),
+                    SizedBox(height: 10)
+                  ]),
+            ),
+          )
+        ]),
       ),
       bottomNavigationBar: BottomNavigationBar(
         elevation: 0.0,
