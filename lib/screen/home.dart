@@ -137,28 +137,21 @@ class HomeScreen extends StatelessWidget {
                               icon: Icons.qr_code_scanner_rounded),
                         ]),
 
-                    const SizedBox(height: 50),
+                    const SizedBox(height: 40),
                     //
                     //Header
                     //
                     Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Text(
+                        children: const [
+                          Text(
                             "Transaction History",
                             style: TextStyle(
-
-                                // fontFamily: AppFonts.title,
-                                ),
+                                color: Color(0xff5d35d6),
+                                fontWeight: FontWeight.w600),
                           ),
-                          GestureDetector(
-                            // onTap: () => Navigator.of(context)
-                            //     .push(CupertinoPageRoute(builder: (context) => ontap)),
-                            child: const Text(
-                              "See All",
-                            ),
-                          ),
+                          Text("See all"),
                         ]),
                     const SizedBox(height: 10),
                     //
@@ -223,7 +216,7 @@ class TransactionHistoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     return Container(
-      height: 75,
+      height: 80,
       width: screenSize.width,
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(8.0)),
@@ -245,13 +238,13 @@ class TransactionHistoryWidget extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Colors.black),
                 ),
+                SizedBox(height: 2),
                 Text(
-                  "Hello, selam",
+                  "Utility Bill",
                   style: TextStyle(
-                      color: Colors.black38,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 13.5),
+                      color: Color(0xff5d35d6), fontWeight: FontWeight.w600),
                 ),
+                SizedBox(height: 2),
                 Text(
                   "Date 20/12/23",
                   style: TextStyle(color: Colors.black45, fontSize: 12),
@@ -268,16 +261,12 @@ class TransactionHistoryWidget extends StatelessWidget {
                   Text(
                     "5600.00",
                     style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
+                        color: Color(0xff5d35d6), fontWeight: FontWeight.bold),
                   ),
                   Text(
                     "ETB",
                     style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 13.5),
+                        color: Color(0xff5d35d6), fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -299,7 +288,7 @@ class PaymentWidgets extends StatelessWidget {
       width: screenSize.width * 0.41,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        color: Colors.indigo.shade100,
+        color: Color.fromARGB(255, 224, 218, 235),
       ),
       child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -310,14 +299,14 @@ class PaymentWidgets extends StatelessWidget {
               height: 40,
               width: 40,
               decoration: const BoxDecoration(
-                  shape: BoxShape.circle, color: Colors.indigo),
-              child: Icon(icon, color: Colors.white54, size: 22),
+                  shape: BoxShape.circle, color: Color(0xff5d35d6)),
+              child: Icon(icon, color: Colors.white, size: 22),
             ),
             const SizedBox(width: 10),
             Text(title,
                 style: const TextStyle(
                     fontSize: 15,
-                    color: Colors.white,
+                    color: Color(0xff5d35d6),
                     fontWeight: FontWeight.bold)),
           ]),
     );
