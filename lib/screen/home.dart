@@ -86,7 +86,7 @@ class HomeScreen extends StatelessWidget {
                 //
                 //
                 //
-                SizedBox(height: screenSize.height * 0.05),
+                SizedBox(height: screenSize.height * 0.045),
                 const Text("Available limit",
                     style: TextStyle(fontSize: 15, color: Colors.white70)),
                 SizedBox(height: screenSize.height * 0.015),
@@ -94,7 +94,43 @@ class HomeScreen extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white))
+                        color: Colors.white)),
+                SizedBox(height: screenSize.height * 0.03),
+
+                Container(
+                  height: 40,
+                  width: screenSize.width,
+                  decoration: BoxDecoration(
+                      color: Colors.white12,
+                      borderRadius: BorderRadius.circular(25),
+                      border: Border.all(color: Colors.white)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Text("10,000",
+                          style: TextStyle(color: Colors.white70)),
+                      Container(
+                        height: 11,
+                        width: screenSize.width * 0.5,
+                        decoration: BoxDecoration(
+                            color: Colors.white24,
+                            borderRadius: BorderRadius.circular(25)),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                            width: screenSize.width * 0.25,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(25)),
+                          ),
+                        ),
+                      ),
+                      const Text("30,000",
+                          style: TextStyle(color: Colors.white70)),
+                    ],
+                  ),
+                ),
               ]),
             ),
           ),
@@ -245,10 +281,10 @@ class TransactionHistoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     return Container(
-      height: 80,
+      height: 75,
       width: screenSize.width,
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(8.0)),
+          color: Colors.white, borderRadius: BorderRadius.circular(12.0)),
       child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -344,7 +380,7 @@ class PaymentWidgets extends StatelessWidget {
       height: 65,
       width: screenSize.width * 0.41,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
+        borderRadius: BorderRadius.circular(12.0),
         color: const Color.fromARGB(255, 224, 218, 235),
       ),
       child: Row(
