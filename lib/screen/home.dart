@@ -7,20 +7,21 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          height: screenSize.height,
-          width: screenSize.width,
-          // constraints: BoxConstraints(
-          //   maxHeight: screenSize.height,
-          //   maxWidth: screenSize.width,
-          // ),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-                colors: [Colors.indigo, Colors.blue.shade400]),
-          ),
+      backgroundColor: Colors.grey.shade100,
+      body: Container(
+        height: screenSize.height,
+        width: screenSize.width,
+        // constraints: BoxConstraints(
+        //   maxHeight: screenSize.height,
+        //   maxWidth: screenSize.width,
+        // ),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: [Colors.indigo, Colors.blue.shade400]),
+        ),
+        child: SafeArea(
           child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,13 +110,15 @@ class HomeScreen extends StatelessWidget {
                 //
                 //
                 //
+                //
+                //
                 Expanded(
                   child: Container(
                     width: screenSize.width,
-                    decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius:
-                            BorderRadius.vertical(top: Radius.circular(40.0))),
+                    decoration: BoxDecoration(
+                        color: Colors.grey.shade100,
+                        borderRadius: const BorderRadius.vertical(
+                            top: Radius.circular(40.0))),
                     child: Padding(
                       padding:
                           const EdgeInsets.only(top: 25, right: 25, left: 25),
@@ -147,7 +150,40 @@ class HomeScreen extends StatelessWidget {
                                   PaymentWidgets(
                                       title: "Scan",
                                       icon: Icons.qr_code_scanner_rounded),
-                                ])
+                                ]),
+
+                            const SizedBox(height: 50),
+                            //
+                            //Header
+                            //
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const Text(
+                                  "Transaction History",
+                                  style: TextStyle(
+
+                                      // fontFamily: AppFonts.title,
+                                      ),
+                                ),
+                                GestureDetector(
+                                  // onTap: () => Navigator.of(context)
+                                  //     .push(CupertinoPageRoute(builder: (context) => ontap)),
+                                  child: const Text(
+                                    "See All",
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+                            //
+                            //
+                            //
+                            const TransactionHistoryWidget(),
+                            const SizedBox(height: 10),
+                            const TransactionHistoryWidget(),
+                            SizedBox(height: 80)
                           ]),
                     ),
                   ),
@@ -155,6 +191,113 @@ class HomeScreen extends StatelessWidget {
               ]),
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        elevation: 0.0,
+        type: BottomNavigationBarType.fixed,
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+        unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+        selectedItemColor: Colors.indigo,
+        unselectedItemColor: Colors.grey,
+        backgroundColor: Colors.grey.shade100,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home_outlined,
+              size: 27,
+            ),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.wallet_giftcard_outlined,
+                size: 27,
+              ),
+              label: "Transaction"),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.favorite_outline,
+                size: 27,
+              ),
+              label: "Help"),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.person_outline,
+                size: 27,
+              ),
+              label: "Profile"),
+        ],
+      ),
+    );
+  }
+}
+
+class TransactionHistoryWidget extends StatelessWidget {
+  const TransactionHistoryWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    Size screenSize = MediaQuery.of(context).size;
+    return Container(
+      height: 75,
+      width: screenSize.width,
+      decoration: BoxDecoration(
+          color: Colors.white, borderRadius: BorderRadius.circular(8.0)),
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(width: 10),
+            Image.asset("assets/whit2.jpg", height: 40),
+            const SizedBox(width: 10),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Text(
+                  "Ethio telecom bill",
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+                Text(
+                  "Hello, selam",
+                  style: TextStyle(
+                      color: Colors.black38,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 13.5),
+                ),
+                Text(
+                  "Date 20/12/23",
+                  style: TextStyle(color: Colors.black45, fontSize: 12),
+                ),
+              ],
+            ),
+            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.only(right: 15.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: const [
+                  Text(
+                    "5600.00",
+                    style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                  ),
+                  Text(
+                    "ETB",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 13.5),
+                  ),
+                ],
+              ),
+            ),
+          ]),
     );
   }
 }
