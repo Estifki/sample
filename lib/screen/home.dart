@@ -72,16 +72,26 @@ class HomeScreen extends StatelessWidget {
                       ),
                       const Spacer(),
                       Container(
-                        height: 35,
-                        width: 35,
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.circle, color: Colors.white24),
-                        child: const Icon(
-                          Icons.notifications_none_outlined,
-                          color: Colors.white54,
-                          size: 24,
-                        ),
-                      ),
+                          height: 35,
+                          width: 35,
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.white24),
+                          child: Stack(children: [
+                            Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Image.asset("assets/Bell.png"),
+                            ),
+                            Positioned(
+                                top: 8,
+                                left: 8,
+                                child: Container(
+                                  height: 8,
+                                  width: 8,
+                                  decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.red),
+                                ))
+                          ])),
                     ]),
                 //
                 //
@@ -104,32 +114,37 @@ class HomeScreen extends StatelessWidget {
                       color: Colors.white12,
                       borderRadius: BorderRadius.circular(25),
                       border: Border.all(color: Colors.white)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const Text("10,000",
-                          style: TextStyle(color: Colors.white70)),
-                      Container(
-                        height: 11,
-                        width: screenSize.width * 0.5,
-                        decoration: BoxDecoration(
-                            color: Colors.white24,
-                            borderRadius: BorderRadius.circular(25)),
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Container(
-                            width: screenSize.width * 0.25,
+                  child: Stack(alignment: Alignment.center, children: [
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Text("10,000",
+                              style: TextStyle(color: Colors.white70)),
+                          Container(
+                            height: 11,
+                            width: screenSize.width * 0.5,
                             decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Colors.white24,
                                 borderRadius: BorderRadius.circular(25)),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Container(
+                                width: screenSize.width * 0.2,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(25)),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      const Text("30,000",
-                          style: TextStyle(color: Colors.white70)),
-                    ],
-                  ),
+                          const Text("30,000",
+                              style: TextStyle(color: Colors.white70)),
+                        ]),
+                    Positioned(
+                        left: screenSize.width * 0.35,
+                        child: Image.asset("assets/icon_one_circle.png",
+                            height: 25))
+                  ]),
                 ),
               ]),
             ),
@@ -163,20 +178,20 @@ class HomeScreen extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         elevation: 0.0,
         type: BottomNavigationBarType.fixed,
-        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
-        unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+        selectedLabelStyle: const TextStyle(fontSize: 0),
+        unselectedLabelStyle: const TextStyle(fontSize: 0),
         selectedItemColor: const Color(0xff5d35d6),
         unselectedItemColor: Colors.grey,
         backgroundColor: Colors.grey.shade100,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined, size: 27), label: "Home"),
+              icon: Image.asset("assets/Home_icon.png"), label: ""),
           BottomNavigationBarItem(
-              icon: Icon(Icons.sync_alt_sharp, size: 27), label: "Transaction"),
+              icon: Image.asset("assets/Transction_icon.png"), label: ""),
           BottomNavigationBarItem(
-              icon: Icon(Icons.help_outline_sharp, size: 27), label: "Help"),
+              icon: Image.asset("assets/Help_icon.png"), label: ""),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline, size: 27), label: "Profile"),
+              icon: Image.asset("assets/Profile_Icon.png"), label: ""),
         ],
       ),
     );
@@ -217,9 +232,8 @@ class BottomWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
-                PaymentWidgets(title: "Pay", icon: Icons.clean_hands_rounded),
-                PaymentWidgets(
-                    title: "Scan", icon: Icons.qr_code_scanner_rounded),
+                PaymentWidgets(title: "Pay", image: "assets/Pay_icon.png"),
+                PaymentWidgets(title: "Scan", image: "assets/Scan_Icon.png"),
               ]),
           const SizedBox(height: 20),
           Row(
@@ -227,9 +241,9 @@ class BottomWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
                 PaymentWidgets(
-                    title: "Withdraw", icon: Icons.clean_hands_rounded),
+                    title: "Withdraw", image: "assets/Withdraw_icon.png"),
                 PaymentWidgets(
-                    title: "Pay Bills", icon: Icons.spatial_audio_off_rounded),
+                    title: "Pay Bills", image: "assets/pay_bills_icon.png"),
               ]),
 
           const SizedBox(height: 40),
@@ -295,10 +309,11 @@ class TransactionHistoryWidget extends StatelessWidget {
                 width: 40,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.grey.withOpacity(0.1),
+                  color: Colors.grey.withOpacity(0.07),
                 ),
                 child: Center(
-                    child: Image.asset("assets/ethio_tele.jpg", height: 20))),
+                    child: Image.asset("assets/ethio_tele-removebg-preview.png",
+                        height: 20))),
             const SizedBox(width: 10),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -371,8 +386,8 @@ class TransactionHistoryWidget extends StatelessWidget {
 //
 class PaymentWidgets extends StatelessWidget {
   final String title;
-  final IconData icon;
-  const PaymentWidgets({super.key, required this.title, required this.icon});
+  final String image;
+  const PaymentWidgets({super.key, required this.title, required this.image});
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -388,13 +403,7 @@ class PaymentWidgets extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(width: screenSize.width * 0.05),
-            Container(
-              height: 40,
-              width: 40,
-              decoration: const BoxDecoration(
-                  shape: BoxShape.circle, color: Color(0xff5d35d6)),
-              child: Icon(icon, color: Colors.white, size: 22),
-            ),
+            Image.asset(image, height: 40),
             const SizedBox(width: 10),
             Text(title,
                 style: const TextStyle(
