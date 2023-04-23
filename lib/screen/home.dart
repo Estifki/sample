@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+import '../slider.dart';
+
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  double _currentValue = 10000;
 
   @override
   Widget build(BuildContext context) {
@@ -100,8 +109,8 @@ class HomeScreen extends StatelessWidget {
                 const Text("Available limit",
                     style: TextStyle(fontSize: 15, color: Colors.white70)),
                 SizedBox(height: screenSize.height * 0.015),
-                const Text("20,000.00",
-                    style: TextStyle(
+                Text((30000 - _currentValue).toStringAsFixed(0),
+                    style: const TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                         color: Colors.white)),
@@ -114,37 +123,35 @@ class HomeScreen extends StatelessWidget {
                       color: Colors.white12,
                       borderRadius: BorderRadius.circular(25),
                       border: Border.all(color: Colors.white)),
-                  child: Stack(alignment: Alignment.center, children: [
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Text("10,000",
-                              style: TextStyle(color: Colors.white70)),
-                          Container(
-                            height: 11,
-                            width: screenSize.width * 0.5,
-                            decoration: BoxDecoration(
-                                color: Colors.white24,
-                                borderRadius: BorderRadius.circular(25)),
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: Container(
-                                width: screenSize.width * 0.2,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(25)),
-                              ),
-                            ),
-                          ),
-                          const Text("30,000",
-                              style: TextStyle(color: Colors.white70)),
-                        ]),
-                    Positioned(
-                        left: screenSize.width * 0.35,
-                        child: Image.asset("assets/icon_one_circle.png",
-                            height: 25))
-                  ]),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const SizedBox(width: 10),
+                        SizedBox(
+                          width: 40,
+                          child: Text(_currentValue.toStringAsFixed(0),
+                              style: const TextStyle(color: Colors.white70)),
+                        ),
+                        Expanded(
+                          child: DartImageSlider(
+                              slider: Slider(
+                                  value: _currentValue.toDouble(),
+                                  activeColor: Colors.white,
+                                  inactiveColor: Colors.white24,
+                                  max: 30000,
+                                  min: 0,
+                                  onChanged: (double value) {
+                                    setState(() {
+                                      _currentValue = value;
+                                    });
+                                  }),
+                              imagePath: 'assets/icon_one_circle.png'),
+                        ),
+                        const Text("30,000",
+                            style: TextStyle(color: Colors.white70)),
+                        const SizedBox(width: 10),
+                      ]),
                 ),
               ]),
             ),
